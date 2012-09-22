@@ -1,0 +1,205 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.dead {
+	background-color: white;
+}
+
+.live {
+	background-color: #E671B8;
+}
+
+#world {
+	position: absolute;
+	left: 70px;
+	right: 0;
+	height: 100%;
+	overflow: hidden;
+}
+
+#world table {
+	border-spacing: 1px;
+	border-collapse: collapse;
+}
+
+#world td {
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	border: 1px dashed #CCC;
+}
+
+.button {
+	position: relative;
+	cursor: pointer;
+	color: white;
+	height: 70px;
+	width: 70px;
+	display: block;
+	font-size: 2.5em;
+	box-sizing: border-box;
+	text-align: center;
+	line-height: 70px;
+	background-color: #1BA1E2;
+}
+
+.button span.desc {
+	position: absolute;
+	line-height: 2em;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.3em !important;
+	text-align: bottom;
+	font-weight: bold;
+}
+
+.button span.value {
+	position: absolute;
+	line-height: 2.5em;
+	left: 0;
+	top: 0;
+	width: 100%;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.6em !important;
+	text-align: bottom;
+	font-weight: bold;
+}
+
+.button span.unit {
+	position: absolute;
+	line-height: 2em;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.4em !important;
+	text-align: bottom;
+	font-weight: bold;
+}
+
+.button:hover {
+	background-color: #0e82b7;
+}
+
+.button:active {
+	background-color: #02648e;
+}
+
+.button:before {
+	font-family: 'icomoon';
+	font-style: normal;
+	speak: none;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+}
+
+.button.active {
+	background-color: #333 !important;
+}
+
+#start:before {
+	content: "\21";
+}
+
+#clean:before {
+	content: "\e02d";
+}
+
+#speedup:before {
+	content: "\e004";
+}
+
+#speeddown:before {
+	content: "\e047";
+}
+
+.started {
+	/*background-color: #333 !important;*/
+	background-color: #0e82b7 !important;
+}
+
+.started:before {
+	content: "\e001" !important;
+}
+
+aside {
+	position: absolute;
+	left: 0;
+	width: 70px;
+	height: 100%;
+	background-color: #1BA1E2;
+}
+
+.btn-group {
+	display: none;
+    position: absolute;
+    z-index: 10000;
+}
+
+.btn-group > * {
+	float: left;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot');
+	src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon.svg#icomoon') format('svg'),
+		url('../fonts/icomoon.woff') format('woff'),
+		url('../fonts/icomoon.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'icomoon';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+	font-family: 'icomoon';
+	font-style: normal;
+	speak: none;
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-play:before {
+	content: "\21";
+}
+.icon-plus:before {
+	content: "\e004";
+}
+.icon-minus:before {
+	content: "\e047";
+}
+.icon-stop:before {
+	content: "\e000";
+}
+.icon-pause:before {
+	content: "\e001";
+}
+
+.icon-quad:before {
+	content: "\e002";
+}
+
+.size-large {
+	font-size: 2em;
+}
+.size-middle {
+	font-size: 1.5em;
+}
+.size-small {
+	font-size: 1em;
+}

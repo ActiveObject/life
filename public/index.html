@@ -1,0 +1,42 @@
+<html>
+
+	<head>
+		<link rel="stylesheet" href="css/style.css">
+		<script type="text/javascript" src="scripts/common.js"></script>
+		<script type="text/javascript" src="scripts/events.js"></script>
+		<script type="text/javascript" src="scripts/set.js"></script>
+		<script type="text/javascript" src="scripts/cell.js"></script>
+		<script type="text/javascript" src="scripts/world.js"></script>
+		<script type="text/javascript" src="scripts/app.js"></script>
+	</head>
+
+	<body>
+		<aside>
+			<a id="start" class="button"><!-- <span>старт</span> --></a>
+			<a id="clean" class="button"></a>
+			<a id="speed" class="button">
+				<span class="value"></span>
+				<span class="unit">ms</span>
+			</a>
+			<a id="size" class="button icon-quad"></a>
+		</aside>
+
+		<div id="speed-group" class="btn-group">
+			<a id="speedup" class="button icon-plus"></a>
+			<a id="speeddown" class="button icon-minus"></a>
+		</div>
+
+		<div id="size-group" class="btn-group">
+			<a id="size-large" class="button icon-quad size-large"></a>
+			<a id="size-middle" class="button icon-quad size-middle"></a>
+			<a id="size-small" class="button icon-quad size-small"></a>
+		</div>
+
+		<div id="world"></div>
+
+		<script type="text/javascript">
+			window.onload = App.init();
+		</script>
+	</body>
+
+</html>
