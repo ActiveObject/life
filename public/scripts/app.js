@@ -76,42 +76,33 @@
 				addClass(startEl, 'started');
 			});
 
-			var setCellSize = function (size) {
-				if (world.isStarted) world.stop();
-				world.build(size);
+			var sizeEl = $('size');
+			$('size-large').addEventListener('click', world.build.bind(world, World.LARGE));
+			$('size-middle').addEventListener('click', world.build.bind(world, World.MIDDLE));
+			$('size-small').addEventListener('click', world.build.bind(world, World.SMALL));
+
+			var sizeBtnClasses = ['size-small', 'size-middle', 'size-large'];
+			var changeClassForSizeButton = function (newClass) {
+				sizeBtnClasses.filter(function (cls) {
+					return cls === newClass;
+				}).forEach(function (cls) {
+					addClass(sizeEl, cls);
+				});
+
+				sizeBtnClasses.filter(function (cls) {
+					return cls !== newClass;
+				}).forEach(function (cls) {
+					removeClass(sizeEl, cls);
+				});
 			};
 
-			var sizeEl = $('size');
-			var sizeLargeEl = $('size-large');
-			var sizeMiddleEl = $('size-middle');
-			var sizeSmallEl = $('size-small');
-
-			sizeLargeEl.addEventListener('click', function () {
-				setCellSize(50);
-				addClass(sizeEl, 'size-large');
-				removeClass(sizeEl, 'size-middle');
-				removeClass(sizeEl, 'size-small');
-			});
-			sizeMiddleEl.addEventListener('click', function () {
-				setCellSize(25);
-				addClass(sizeEl, 'size-middle');
-				removeClass(sizeEl, 'size-large');
-				removeClass(sizeEl, 'size-small');
-			});
-			sizeSmallEl.addEventListener('click', function () {
-				setCellSize(10);
-				addClass(sizeEl, 'size-small');
-				removeClass(sizeEl, 'size-middle');
-				removeClass(sizeEl, 'size-large');
+			world.on('size:change', function (newSize) {
+				if (newSize === World.SMALL)  changeClassForSizeButton('size-small');
+				if (newSize === World.MIDDLE) changeClassForSizeButton('size-middle');
+				if (newSize === World.LARGE)  changeClassForSizeButton('size-large');
 			});
 
-
-			setCellSize(50);
-			addClass(sizeEl, 'size-large');
-			removeClass(sizeEl, 'size-middle');
-			removeClass(sizeEl, 'size-small');
-
-			world.build(50);
+			world.build(World.MIDDLE);
 		}
 	};
 

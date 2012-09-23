@@ -1,7 +1,7 @@
 (function (exports) {
 	function World (el, size) {
 		this.el = el;
-		this.size = size || 25;
+		this.size = size || World.MIDDLE;
 		this.startCell = [0, 0];
 		this.ms = 500;
 		this.liveCells = Set.create();
@@ -9,6 +9,10 @@
 		this.isStarted = false;
 		extend(this, Events);
 	}
+
+	World.SMALL  = 15;
+	World.MIDDLE = 25;
+	World.LARGE  = 50;
 
 	World.prototype.cell = function (position) {
 		var node = this.getNode(position);
@@ -32,7 +36,6 @@
 		return this;
 	};
 
-
 	World.prototype.changeInterval = function (offset) {
 		if (this.isStarted) {
 			this.stop();
@@ -45,6 +48,11 @@
 
 	World.prototype.build = function (size) {
 		console.log(this.el.clientWidth, this.el.clientHeight);
+
+		this.size = size;
+		this.trigger('size:change', size);
+
+		if (this.isStarted) this.stop();
 
 		rows = this.rows = Math.ceil(this.el.clientHeight / size);
 		cols = this.cols = Math.ceil(this.el.clientWidth / size);
