@@ -24,18 +24,6 @@
 			return this;
 		},
 
-		filter: function (iterator, context) {
-			return Array.prototype.filter.call(this.items, iterator, context);
-		},
-
-		map: function (iterator, context) {
-			return Array.prototype.map.call(this.items, iterator, context);
-		},
-
-		forEach: function (iterator, context) {
-			return Array.prototype.forEach.call(this.items, iterator, context);
-		},
-
 		isEmpty: function () {
 			return this.items.length === 0;
 		},
@@ -45,6 +33,12 @@
 			return this;
 		}
 	};
+
+	['map', 'forEach', 'filter'].forEach(function (method) {
+		Set[method] = function () {
+			return Array.prototype[method].apply(this.items, arguments);
+		};
+	});
 
 	exports.Set = Set;
 })(window);
