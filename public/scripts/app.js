@@ -14,7 +14,8 @@
 				if (speedGroup.style.display === "none" || !speedGroup.style.display) {
 					speedGroup.style.display = "block";
 					speedGroup.style.top = speedBtn.offsetTop;
-					speedGroup.style.left = speedBtn.offsetWidth;
+					speedGroup.style.left = speedBtn.offsetWidth + speedBtn.offsetParent.offsetLeft;
+					console.log(speedBtn);
 					addClass(speedBtn, 'active');
 				} else {
 					speedGroup.style.display = 'none';
@@ -28,7 +29,7 @@
 				if (sizeGroup.style.display === "none" || !sizeGroup.style.display) {
 					sizeGroup.style.display = "block";
 					sizeGroup.style.top = sizeBtn.offsetTop;
-					sizeGroup.style.left = sizeBtn.offsetWidth;
+					sizeGroup.style.left = sizeBtn.offsetWidth + speedBtn.offsetParent.offsetLeft;
 					addClass(sizeBtn, 'active');
 				} else {
 					sizeGroup.style.display = 'none';

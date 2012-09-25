@@ -4,16 +4,32 @@
 		"selected_items":
 		[
 			[
+				"new",
+				"newSize"
+			],
+			[
+				"chan",
+				"changeClassForSizeButton"
+			],
+			[
+				"size",
+				"sizeEl"
+			],
+			[
+				"add",
+				"addClass"
+			],
+			[
+				"use",
+				"useMiddle"
+			],
+			[
 				"font",
 				"font-size"
 			],
 			[
 				"fun",
 				"function"
-			],
-			[
-				"size",
-				"sizeSmallEl"
 			],
 			[
 				"unit",
@@ -42,10 +58,6 @@
 			[
 				"worl",
 				"world"
-			],
-			[
-				"add",
-				"addEventListener"
 			],
 			[
 				"for",
@@ -213,10 +225,6 @@
 			],
 			[
 				"cha",
-				"channel"
-			],
-			[
-				"chan",
 				"channel"
 			],
 			[
@@ -506,14 +514,6 @@
 			[
 				"pars",
 				"parseDate"
-			],
-			[
-				"req",
-				"require"
-			],
-			[
-				"sc",
-				"schedule"
 			]
 		]
 	},
@@ -528,26 +528,45 @@
 			}
 		},
 		{
+			"contents": "(function (exports) {\n	var $ = function (id) { return document.getElementById(id); };\n	var App = {\n		init: function () {\n			var worldEl = $('world');\n			var startEl = $('start');\n			var cleanEl = $('clean');\n			var speedupEl = $('speedup');\n			var speeddownEl = $('speeddown');\n\n			var speedBtn = $('speed');\n			var speedGroup = $('speed-group');\n			speedBtn.addEventListener('click', function () {\n				if (speedGroup.style.display === \"none\" || !speedGroup.style.display) {\n					speedGroup.style.display = \"block\";\n					speedGroup.style.top = speedBtn.offsetTop;\n					speedGroup.style.left = speedBtn.offsetWidth;\n					addClass(speedBtn, 'active');\n				} else {\n					speedGroup.style.display = 'none';\n					removeClass(speedBtn, 'active');\n				}\n			});\n\n			var sizeBtn = $('size');\n			var sizeGroup = $('size-group');\n			sizeBtn.addEventListener('click', function () {\n				if (sizeGroup.style.display === \"none\" || !sizeGroup.style.display) {\n					sizeGroup.style.display = \"block\";\n					sizeGroup.style.top = sizeBtn.offsetTop;\n					sizeGroup.style.left = sizeBtn.offsetWidth;\n					addClass(sizeBtn, 'active');\n				} else {\n					sizeGroup.style.display = 'none';\n					removeClass(sizeBtn, 'active');\n				}\n			});\n\n			var world = window.world = new World(worldEl);\n\n			var valueNode = speedBtn.getElementsByClassName('value')[0];\n			var unitNode = speedBtn.getElementsByClassName('unit')[0];\n			valueNode.innerText = world.ms;\n\n			world.on('interval:change', function (interval) {\n				if (interval < 1000) {\n					valueNode.innerText = interval;\n					unitNode.innerText = 'ms';\n				} else {\n					valueNode.innerText = interval / 1000;\n					unitNode.innerText = 's';\n				}\n			});\n\n			startEl.addEventListener('click', function () {\n				world.isStarted ? world.stop() : world.start();\n			});\n\n			cleanEl.addEventListener('click', function () {\n				world.clean();\n			});\n\n			speedupEl.addEventListener('click', function () {\n				world.changeInterval(50);\n			});\n\n			speeddownEl.addEventListener('click', function () {\n				world.changeInterval(-50);\n			});\n\n			world.on('stop', function () {\n				removeClass(startEl, 'started');\n			});\n\n			world.on('start', function () {\n				addClass(startEl, 'started');\n			});\n\n			var sizeEl = $('size');\n			$('size-large').addEventListener('click', world.build.bind(world, World.LARGE));\n			$('size-middle').addEventListener('click', world.build.bind(world, World.MIDDLE));\n			$('size-small').addEventL1stener('click', world.build.bind(world, World.SMALL));\n\n			var sizeBtnClasses = ['size-small', 'size-middle', 'size-large'];\n			var changeClassForSizeButton = function (newClass) {\n				sizeBtnClasses.filter(function (cls) {\n					return cls === newClass;\n				}).forEach(function (cls) {\n					addClass(sizeEl, cls);\n				});\n\n				sizeBtnClasses.filter(function (cls) {\n					return cls !== newClass;\n				}).forEach(function (cls) {\n					removeClass(sizeEl, cls);\n				});\n			};\n\n			world.on('size:change', function (newSize) {\n				if (newSize === World.SMALL)  changeClassForSizeButton('size-small');\n				if (newSize === World.MIDDLE) changeClassForSizeButton('size-middle');\n				if (newSize === World.LARGE)  changeClassForSizeButton('size-large');\n			});\n\n			world.build(World.MIDDLE);\n		}\n	};\n\n	exports.App = App;\n})(window);",
 			"file": "public/scripts/app.js",
+			"file_size": 3259,
+			"file_write_time": 1348407911000000,
 			"settings":
 			{
-				"buffer_size": 3252,
+				"buffer_size": 3259,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "package.json",
+			"file": "public/scripts/cell.js",
 			"settings":
 			{
-				"buffer_size": 145,
+				"buffer_size": 732,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "public/css/style.css",
+			"file": "public/scripts/set.js",
 			"settings":
 			{
-				"buffer_size": 3237,
+				"buffer_size": 825,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/scripts/world.js",
+			"settings":
+			{
+				"buffer_size": 5423,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/scripts/common.js",
+			"settings":
+			{
+				"buffer_size": 1767,
 				"line_ending": "Unix"
 			}
 		}
@@ -688,6 +707,9 @@
 	},
 	"file_history":
 	[
+		"/home/activeobject/projects/battle/life/public/css/style.css",
+		"/home/activeobject/projects/battle/life/package.json",
+		"/home/activeobject/projects/battle/life/public/scripts/world.js",
 		"/home/activeobject/projects/battle/life/README.md",
 		"/tmp/.fr-aw7BSM/icomoon1230/style.css",
 		"/home/activeobject/projects/battle/life/public/world.js",
@@ -812,10 +834,7 @@
 		"/home/activeobject/projects/mak/report-service/src/app/report/deviation:v1/kanso.json",
 		"/home/activeobject/projects/mak/report-service/bin/api.js",
 		"/home/activeobject/projects/mak/report-service/bin/kue.js",
-		"/home/activeobject/projects/mak/report-service/src/server.coffee",
-		"/home/activeobject/projects/mak/report-service/src/aggregator.coffee",
-		"/home/activeobject/projects/mak/report-service/src/handler.coffee",
-		"/home/activeobject/projects/mak/report-service/src/importer.coffee"
+		"/home/activeobject/projects/mak/report-service/src/server.coffee"
 	],
 	"find":
 	{
@@ -999,7 +1018,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1014,8 +1033,8 @@
 						"selection":
 						[
 							[
-								1205,
-								1205
+								1225,
+								1225
 							]
 						],
 						"settings":
@@ -1024,7 +1043,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 153.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1034,47 +1053,49 @@
 					"file": "public/scripts/app.js",
 					"settings":
 					{
-						"buffer_size": 3252,
+						"buffer_size": 3259,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								77,
-								77
+								2603,
+								2603
 							]
 						],
 						"settings":
 						{
 							"auto_name": "",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1224.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "package.json",
+					"file": "public/scripts/cell.js",
 					"settings":
 					{
-						"buffer_size": 145,
+						"buffer_size": 732,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8,
-								8
+								696,
+								696
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1084,43 +1105,81 @@
 				},
 				{
 					"buffer": 3,
-					"file": "public/css/style.css",
+					"file": "public/scripts/set.js",
 					"settings":
 					{
-						"buffer_size": 3237,
+						"buffer_size": 825,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2115,
-								2115
-							],
-							[
-								2149,
-								2149
-							],
-							[
-								2215,
-								2215
-							],
-							[
-								2268,
-								2268
-							],
-							[
-								2315,
-								2315
+								298,
+								298
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2346.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/scripts/world.js",
+					"settings":
+					{
+						"buffer_size": 5423,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1433,
+								1433
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/scripts/common.js",
+					"settings":
+					{
+						"buffer_size": 1767,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1750,
+								1750
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 816.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1185,6 +1244,14 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"world",
+				"public/scripts/world.js"
+			],
+			[
+				"s",
+				"public/scripts/set.js"
+			],
 			[
 				"watche",
 				"src/app/watcher.coffee"

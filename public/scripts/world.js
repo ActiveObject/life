@@ -57,8 +57,7 @@
 		rows = this.rows = Math.ceil(this.el.clientHeight / size);
 		cols = this.cols = Math.ceil(this.el.clientWidth / size);
 
-		max = cols > rows ? cols : rows;
-		rows = this.rows = cols = this.cols = max;
+		rows = this.rows = cols = this.cols = Math.min(cols, rows);
 		console.log("%s:%s", rows, cols);
 
 		var emptyEl = document.createElement('td');

@@ -13,15 +13,17 @@ body {
 
 #world {
 	position: absolute;
-	left: 70px;
+	left: 0;
 	right: 0;
 	height: 100%;
 	overflow: hidden;
+	background-color: #EEEEF2;
 }
 
 #world table {
 	border-spacing: 1px;
 	border-collapse: collapse;
+	margin: 0 auto;
 }
 
 #world td {
@@ -29,6 +31,31 @@ body {
 	margin: 0;
 	padding: 0;
 	border: 1px dashed #CCC;
+}
+
+aside {
+	position: absolute;
+	z-index: 1000;
+	left: 0;
+	width: 70px;
+	height: 100%;
+	background-color: #1BA1E2;
+}
+
+@media screen and (max-width: 800px) {
+	aside {
+		left: 0 !important;
+	}
+}
+
+.btn-group {
+	display: none;
+    position: absolute;
+    z-index: 10000;
+}
+
+.btn-group > * {
+	float: left;
 }
 
 .button {
@@ -120,30 +147,11 @@ body {
 }
 
 .started {
-	/*background-color: #333 !important;*/
 	background-color: #0e82b7 !important;
 }
 
 .started:before {
 	content: "\e001" !important;
-}
-
-aside {
-	position: absolute;
-	left: 0;
-	width: 70px;
-	height: 100%;
-	background-color: #1BA1E2;
-}
-
-.btn-group {
-	display: none;
-    position: absolute;
-    z-index: 10000;
-}
-
-.btn-group > * {
-	float: left;
 }
 
 @font-face {
