@@ -77,4 +77,17 @@
 		return obj;
 	};
 
+	/**
+	 * Invoke method fnName for an obj.
+	 * All arguments from the second to be transferred to the method.
+	 * Return function that receive obj.
+	 */
+	exports.invoke = function (fnName) {
+		var args = slice(arguments, 1);
+		return function (obj) {
+			return obj[fnName].apply(obj, args);
+		};
+	};
+
+
 })(window);

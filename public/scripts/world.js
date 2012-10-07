@@ -26,9 +26,7 @@
 			return world.cell(pos.split(':'));
 		};
 
-		this.liveCells.map(toCell).forEach(function (cell) {
-			cell.die();
-		});
+		this.liveCells.map(toCell).forEach(invoke('die'));
 
 		this.liveCells.clean();
 		this.potentialLive.clean();
@@ -213,10 +211,7 @@
 	};
 
 	World.prototype.show = function (cells) {
-		cells.forEach(function (cell) {
-			cell.live();
-		});
-
+		cells.forEach(invoke('live'));
 		return this;
 	};
 
