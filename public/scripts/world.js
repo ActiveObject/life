@@ -1,4 +1,6 @@
 (function (exports) {
+	"use strict";
+
 	function World (el, size) {
 		this.el = el;
 		this.size = size || World.MIDDLE;
@@ -52,8 +54,8 @@
 
 		if (this.isStarted) this.stop();
 
-		rows = this.rows = Math.ceil(this.el.clientHeight / size);
-		cols = this.cols = Math.ceil(this.el.clientWidth / size);
+		var rows = this.rows = Math.ceil(this.el.clientHeight / size);
+		var cols = this.cols = Math.ceil(this.el.clientWidth / size);
 
 		rows = this.rows = cols = this.cols = Math.min(cols, rows);
 		console.log("%s:%s", rows, cols);

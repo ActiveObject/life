@@ -1,4 +1,6 @@
 (function (exports) {
+	"use strict";
+
 	var slice = Array.prototype.slice;
 
 	exports.last = function (array) {

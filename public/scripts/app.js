@@ -1,4 +1,6 @@
 (function (exports) {
+	"use strict";
+
 	var $ = function (id) { return document.getElementById(id); };
 	var App = {
 		init: function () {
@@ -15,7 +17,6 @@
 					speedGroup.style.display = "block";
 					speedGroup.style.top = speedBtn.offsetTop;
 					speedGroup.style.left = speedBtn.offsetWidth + speedBtn.offsetParent.offsetLeft;
-					console.log(speedBtn);
 					addClass(speedBtn, 'active');
 				} else {
 					speedGroup.style.display = 'none';

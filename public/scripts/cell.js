@@ -1,4 +1,6 @@
 (function (exports) {
+	"use strict";
+
 	var Cell = {
 		deadClass: 'dead',
 		liveClass: 'live',

@@ -1,4 +1,6 @@
 (function (exports) {
+	"use strict";
+
 	var Set = {
 		create: function () {
 			var set = Object.create(Set);
